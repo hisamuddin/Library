@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import TopicsList from './components/TopicsList';
-import TopicViewer from './components/TopicViewer';
-
-import Array from './components/Array';
-import studyMaterials from './data/array.json';
+import TopicDetail from './components/TopicDetail';
 import studyMaterial from './data/studyMaterial.json';
-
 import './App.css';
 
 const App = () => {
@@ -28,14 +24,10 @@ const App = () => {
       <Header />
       <div className="main">
         <TopicsList topics={topics} onSelectTopic={handleSelectTopic} />
-        <TopicViewer topic={selectedTopic} />
-
-        <Array topic={studyMaterials} />
+        <TopicDetail topic={selectedTopic} />
       </div>
     </div>
   );
 };
 
 export default App;
-
-

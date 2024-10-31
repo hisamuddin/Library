@@ -1,0 +1,257 @@
+{
+    "topics": [
+        {
+            "id": "1",
+            "title": "Arrays",
+            "description": "Detailed overview of arrays, operations, and examples in C#.",
+            "content": {
+                "overview": "Arrays are a collection of elements stored at contiguous memory locations, with fixed size, index-based access, and homogeneous elements.",
+                "declaration_initialization": {
+                    "explanation": "Arrays can be declared and initialized in various ways. In C#, arrays are strongly typed, meaning each element must be of the same data type.",
+                    "code": [
+                        "// Declaration and initialization",
+                        "int[] numbers = new int[5]; // Declares an integer array of size 5",
+                        "numbers[0] = 10;",
+                        "numbers[1] = 20;",
+                        "int[] predefinedNumbers = { 10, 20, 30, 40, 50 };"
+                    ]
+                },
+                "accessing_elements": {
+                    "explanation": "Elements in an array are accessed using an index, starting from 0.",
+                    "code": [
+                        "Console.WriteLine(predefinedNumbers[0]); // Output: 10",
+                        "Console.WriteLine(predefinedNumbers[3]); // Output: 40"
+                    ]
+                },
+                "operations": {
+                    "inserting_elements": {
+                        "explanation": "Insertion replaces an element at a specific index since arrays have fixed size.",
+                        "code": [
+                            "int[] numbers = { 10, 20, 30, 40, 50 };",
+                            "numbers[2] = 99; // Replace the value at index 2",
+                            "Console.WriteLine(numbers[2]); // Output: 99"
+                        ]
+                    },
+                    "traversing_array": {
+                        "explanation": "Traversing involves accessing each element in the array using a loop.",
+                        "code": [
+                            "int[] numbers = { 10, 20, 30, 40, 50 };",
+                            "// Using for loop",
+                            "for (int i = 0; i < numbers.Length; i++) { Console.WriteLine(numbers[i]); }",
+                            "// Using foreach loop",
+                            "foreach (int number in numbers) { Console.WriteLine(number); }"
+                        ]
+                    },
+                    "searching": {
+                        "linear_search": {
+                            "explanation": "Linear search involves iterating through the array to find a target value.",
+                            "code": [
+                                "int[] numbers = { 10, 20, 30, 40, 50 };",
+                                "int target = 30;",
+                                "bool found = false;",
+                                "for (int i = 0; i < numbers.Length; i++) {",
+                                "    if (numbers[i] == target) {",
+                                "        Console.WriteLine(\"Element found at index: \" + i);",
+                                "        found = true;",
+                                "        break;",
+                                "    }",
+                                "}",
+                                "if (!found) { Console.WriteLine(\"Element not found\"); }"
+                            ]
+                        },
+                        "binary_search": {
+                            "explanation": "Binary search is efficient for sorted arrays, using divide-and-conquer to find the target.",
+                            "code": [
+                                "Array.Sort(numbers); // Ensure the array is sorted",
+                                "int index = Array.BinarySearch(numbers, 30);",
+                                "if (index >= 0) {",
+                                "    Console.WriteLine(\"Element found at index: \" + index);",
+                                "} else {",
+                                "    Console.WriteLine(\"Element not found\");",
+                                "}"
+                            ]
+                        }
+                    },
+                    "deleting_element": {
+                        "explanation": "Deletion in a fixed-size array involves resetting an element to a default value or copying elements to a new array.",
+                        "code": [
+                            "int[] numbers = { 10, 20, 30, 40, 50 };",
+                            "numbers[2] = 0; // 'Delete' by setting to 0"
+                        ]
+                    },
+                    "copying_resizing": {
+                        "explanation": "To resize an array, create a new array of the desired size and copy elements.",
+                        "code": [
+                            "int[] numbers = { 10, 20, 30 };",
+                            "int[] newArray = new int[5];",
+                            "Array.Copy(numbers, newArray, numbers.Length);",
+                            "foreach (int num in newArray) { Console.WriteLine(num); } // Output: 10, 20, 30, 0, 0"
+                        ]
+                    }
+                },
+                "multi_dimensional_arrays": {
+                    "explanation": "Multi-dimensional arrays, like 2D arrays, store data in multiple dimensions and are useful for matrices.",
+                    "code": [
+                        "int[,] matrix = new int[3, 3]; // 3x3 matrix",
+                        "matrix[0, 0] = 1; matrix[0, 1] = 2; matrix[1, 0] = 4;",
+                        "Console.WriteLine(matrix[0, 1]); // Output: 2"
+                    ]
+                },
+                "jagged_arrays": {
+                    "explanation": "Jagged arrays are arrays of arrays, where each sub-array can have a different length.",
+                    "code": [
+                        "int[][] jaggedArray = new int[3][];",
+                        "jaggedArray[0] = new int[] { 1, 2 };",
+                        "jaggedArray[1] = new int[] { 3, 4, 5 };",
+                        "Console.WriteLine(jaggedArray[1][2]); // Output: 5"
+                    ]
+                },
+                "common_problems": {
+                    "max_min": {
+                        "explanation": "Finding the maximum and minimum elements in an array.",
+                        "code": [
+                            "int[] numbers = { 10, 20, 5, 30, 15 };",
+                            "int max = numbers[0];",
+                            "int min = numbers[0];",
+                            "foreach (int num in numbers) {",
+                            "    if (num > max) max = num;",
+                            "    if (num < min) min = num;",
+                            "}",
+                            "Console.WriteLine(\"Max: \" + max); // Output: 30",
+                            "Console.WriteLine(\"Min: \" + min); // Output: 5"
+                        ]
+                    },
+                    "reverse_array": {
+                        "explanation": "Reversing an array can be done in-place using a helper method.",
+                        "code": [
+                            "int[] numbers = { 1, 2, 3, 4, 5 };",
+                            "Array.Reverse(numbers);",
+                            "foreach (int num in numbers) { Console.WriteLine(num); } // Output: 5, 4, 3, 2, 1"
+                        ]
+                    },
+                    "remove_duplicates": {
+                        "explanation": "Removing duplicates can be done using a `HashSet` for unique values.",
+                        "code": [
+                            "int[] numbers = { 1, 2, 2, 3, 4, 4, 5 };",
+                            "HashSet<int> uniqueNumbers = new HashSet<int>(numbers);",
+                            "foreach (int num in uniqueNumbers) { Console.WriteLine(num); } // Output: 1, 2, 3, 4, 5"
+                        ]
+                    }
+                }
+            },
+            "order": 1
+        },
+        {
+            "id": "2",
+            "title": "Strings",
+            "description": "Understanding strings, operations, and common string manipulation techniques.",
+            "content": "Detailed notes on string operations (concatenation, substring, reverse), pattern matching algorithms, and common problems like anagram checks and palindrome detection.",
+            "order": 2
+        },
+        {
+            "id": "3",
+            "title": "Linked Lists",
+            "description": "Understanding linked lists, types of linked lists, and basic operations.",
+            "content": "Notes on singly, doubly, and circular linked lists, operations (insertion, deletion, searching), and important concepts like reversing a linked list.",
+            "order": 3
+        },
+        {
+            "id": "4",
+            "title": "Stacks",
+            "description": "Learn about stacks, their operations, and use cases in algorithms.",
+            "content": "Definition and properties of stacks, common stack operations (push, pop), applications in problems like balanced parentheses, and postfix expression evaluation.",
+            "order": 4
+        },
+        {
+            "id": "5",
+            "title": "Queues",
+            "description": "Introduction to queues, types, operations, and use cases.",
+            "content": "Concepts of queues, enqueue and dequeue operations, types like circular queue, deque, and applications such as BFS in graphs.",
+            "order": 5
+        },
+        {
+            "id": "6",
+            "title": "Hashing",
+            "description": "Understanding hashing, hash tables, and collision resolution techniques.",
+            "content": "Explanation of hashing, hash functions, hash table operations, and collision resolution techniques (chaining, open addressing).",
+            "order": 6
+        },
+        {
+            "id": "7",
+            "title": "Trees",
+            "description": "Introduction to trees, types, traversals, and applications.",
+            "content": "Details on binary trees, binary search trees, tree traversal techniques (pre-order, in-order, post-order), and applications in various algorithms.",
+            "order": 7
+        },
+        {
+            "id": "8",
+            "title": "Binary Search Tree (BST)",
+            "description": "Learn about binary search trees, properties, and operations.",
+            "content": "Notes on BST properties, insertion, deletion, search operations, and applications in range search and maintaining sorted data.",
+            "order": 8
+        },
+        {
+            "id": "9",
+            "title": "Heap",
+            "description": "Understanding heaps, heap types, and priority queue implementation.",
+            "content": "Introduction to max-heaps and min-heaps, heap operations, and applications in algorithms like heap sort and priority queues.",
+            "order": 9
+        },
+        {
+            "id": "10",
+            "title": "Graphs",
+            "description": "Graph theory basics, representations, and traversals.",
+            "content": "Definition of graphs, representations (adjacency list and matrix), traversal techniques (BFS, DFS), and applications in shortest path, network flow, and connectivity.",
+            "order": 10
+        },
+        {
+            "id": "11",
+            "title": "Dynamic Programming",
+            "description": "Introduction to dynamic programming, principles, and classic problems.",
+            "content": "Concepts of dynamic programming (memoization, tabulation), problem-solving techniques, and classic DP problems like knapsack, longest common subsequence.",
+            "order": 11
+        },
+        {
+            "id": "12",
+            "title": "Greedy Algorithms",
+            "description": "Understanding greedy algorithms, properties, and applications.",
+            "content": "Concept of greedy choice property, examples like coin change, minimum spanning tree algorithms (Kruskal's, Prim's), and interval scheduling.",
+            "order": 12
+        },
+        {
+            "id": "13",
+            "title": "Backtracking",
+            "description": "Learn about backtracking and common backtracking problems.",
+            "content": "Introduction to backtracking, common patterns, and problems like N-Queens, Sudoku Solver, and subset generation.",
+            "order": 13
+        },
+        {
+            "id": "14",
+            "title": "Bit Manipulation",
+            "description": "Basics of bit manipulation and its applications in algorithms.",
+            "content": "Explanation of bitwise operations (AND, OR, XOR, shifts), and applications like finding unique elements, subsets, and solving XOR problems.",
+            "order": 14
+        },
+        {
+            "id": "15",
+            "title": "Sorting Algorithms",
+            "description": "Common sorting algorithms, their complexity, and use cases.",
+            "content": "Explanation of sorting algorithms (bubble, selection, insertion, merge, quick sort), their time complexities, and when to use them.",
+            "order": 15
+        },
+        {
+            "id": "16",
+            "title": "Searching Algorithms",
+            "description": "Overview of common searching algorithms and their applications.",
+            "content": "Introduction to linear search, binary search, interpolation search, and applications in problem-solving scenarios.",
+            "order": 16
+        },
+        {
+            "id": "17",
+            "title": "Graph Algorithms",
+            "description": "Advanced graph algorithms and their applications.",
+            "content": "Details on algorithms like Dijkstra's shortest path, Floyd-Warshall, Bellman-Ford, and applications in network routing and social networks.",
+            "order": 17
+        }
+    ]
+}
